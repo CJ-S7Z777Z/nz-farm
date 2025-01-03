@@ -1,0 +1,266 @@
+:root {
+    --background-color: #121212;
+    --card-bg: #1e1e1e;
+    --button-bg: #3a3a3a;
+    --button-hover-bg: #575757;
+    --accent-color: #00d1ff;
+    --text-color: #ffffff;
+    --subtext-color: #b0b0b0;
+    --border-color: #333333;
+    --animation-color: #00ffea;
+    --popup-bg: rgba(0, 0, 0, 0.8);
+    --popup-text: #ffffff;
+    --nav-active-bg: #ff4d4d;
+    --nav-inactive-border: #ffffff;
+    --nav-active-shadow: 0 0 10px #ff4d4d;
+}
+
+• {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--background-color), #1e1e1e);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 60px; /* Для панели навигации */
+}
+
+.header {
+    margin-top: 80px;
+    width: 360px;
+    height: 200px;
+    background: linear-gradient(145deg, var(--card-bg), #2a2a2a);
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    position: relative;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: background 0.5s;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    cursor: pointer;
+}
+
+.logo1 {
+    left: 20px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.logo2 {
+    right: 20px;
+    animation: float 6s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.balance {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 30px;
+    background: linear-gradient(90deg, var(--accent-color), var(--animation-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 3s ease infinite;
+}
+
+.balance span {
+    display: block;
+    font-size: 18px;
+    color: var(--subtext-color);
+    margin-top: 10px;
+}
+
+.profit-left, .profit-right {
+    position: absolute;
+    bottom: 20px;
+    font-size: 16px;
+    color: var(--subtext-color);
+}
+
+.profit-left {
+    left: 20px;
+}
+
+.profit-right {
+    right: 20px;
+}
+
+.farm-button {
+    margin-top: 50px;
+    width: 360px;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--button-bg), #4d4d4d);
+    color: var(--text-color);
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.farm-button:hover {
+    background: linear-gradient(135deg, var(--button-hover-bg), #6b6b6b);
+    transform: translateY(-2px);
+}
+
+.farm-button:active {
+    transform: translateY(0);
+}
+
+.farm-button span {
+    transition: opacity 0.5s;
+    z-index: 1;
+    position: relative;
+}
+
+.farm-button .animation-text,
+.farm-button .animation-number,
+.farm-button .claim-text,
+.farm-button .claim-number {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 1;
+}
+
+.farm-button .animation-text {
+    left: 30px;
+    color: var(--animation-color);
+    font-weight: bold;
+}
+
+.farm-button .animation-number {
+    right: 30px;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.farm-button .claim-text {
+    left: 30px;
+    color: #ff5722;
+    font-weight: bold;
+}
+
+.farm-button .claim-number {
+    right: 30px;
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.farm-button.active .animation-text,
+.farm-button.active .animation-number,
+.farm-button.claim-mode .claim-text,
+.farm-button.claim-mode .claim-number {
+    opacity: 1;
+}
+
+/* Gradient Animation */
+@keyframes gradient {
+    0% { background-position: 0% }
+    50% { background-position: 100% }
+    100% { background-position: 0% }
+}
+
+/* Панель навигации */
+.navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #444;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--subtext-color);
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 8px;
+    border-radius: 15px;
+}
+
+.nav-item.active {
+    background: var(--nav-active-bg);
+    color: var(--text-color);
+    box-shadow: var(--nav-active-shadow);
+}
+
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    transition: fill 0.3s;
+}
+
+.nav-item.active svg {
+    fill: var(--text-color);
+}
+
+.nav-item span {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Всплывающие уведомления */
+.toast {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: var(--popup-bg);
+    color: var(--popup-text);
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.5s, transform 0.5s;
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Адаптивный дизайн для полноэкранного режима */
+@media screen and (orientation: landscape) {
+    .header {
+        width: 500px;
+        height: 250px;
+    }
+
+    .farm-button {
+        width: 500px;
+    }
+}
