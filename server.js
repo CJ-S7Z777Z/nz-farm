@@ -62,10 +62,10 @@ bot.onText(/\/start/, async (msg) => {
         reply_markup: {
             inline_keyboard: [
                 [
-                    { text: 'Открыть Мини-App', web_app: { url: 'https://yourdomain.com/index.html' } }, // Замените URL на ваш
+                    { text: 'Открыть Мини-App', web_app: { url: 'nz-farm-production.up.railway.app' } }, // Замените URL на ваш
                 ],
                 [
-                    { text: 'Перейти в Канал', url: 'https://t.me/yourchannel' }, // Замените URL на ваш канал
+                    { text: 'Перейти в Канал', url: 'https://t.me/neztrix' }, // Замените URL на ваш канал
                 ],
             ],
         },
